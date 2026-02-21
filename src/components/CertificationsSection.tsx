@@ -9,7 +9,7 @@ const certs = [
   { name: "Oracle OCI AI Foundations Associate", year: "2025", pdf: "/certificates/oracle-ai-foundations.pdf" },
   { name: "NPTEL – Python for Data Science", year: "2025", pdf: "/certificates/nptel-python.pdf" },
   { name: "TCS iON – Artificial Intelligence", year: "2025", pdf: "/certificates/tcs-ai.pdf" },
-  { name: "NASSCOM – Acquiring Data ", year: "2024", pdf: "/certificates/Acquiring.pdf" },
+  { name: "NASSCOM – Acquiring Data ", year: "2024", pdf: "/certificates/acquiring.pdf" },
 ];
 
 const CertificationsSection = () => {
