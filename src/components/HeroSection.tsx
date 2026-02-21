@@ -32,14 +32,14 @@ const HeroSection = () => {
           <img alt="Devakkumar S N" className="w-full h-full object-cover" src="/lovable-uploads/c7687c73-156b-40b3-afe0-4075e5dbe63c.png" />
         </motion.div>
 
-        <motion.p
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.2 }}
-          className="font-mono text-sm text-primary mb-4 tracking-widest uppercase">
+        
 
-          Hello World, I'm
-        </motion.p>
+
+
+
+
+
+
 
         <motion.h1
           initial={{ opacity: 0, y: 30 }}
