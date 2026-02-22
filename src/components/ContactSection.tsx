@@ -2,14 +2,35 @@
 import { motion } from "framer-motion";
 import { Mail, Phone, MapPin, Send } from "lucide-react";
 import { useState } from "react";
+import emailjs from "@emailjs/browser";
+import { toast } from "@/hooks/use-toast";
 
 const ContactSection = () => {
   const [form, setForm] = useState({ name: "", email: "", message: "" });
 
+  const [isSending, setIsSending] = useState(false);
+
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    const mailto = `mailto:devakkumarsn@email.com?subject=Portfolio Contact from ${form.name}&body=${form.message}%0A%0AFrom: ${form.email}`;
-    window.open(mailto);
+    setIsSending(true);
+
+    const templateParams = {
+      from_name: form.name,
+      from_email: form.email,
+      message: form.message,
+    };
+
+    emailjs
+      .send("service_nq28iti", "template_pmxdwhn", templateParams, "UhaDdgiISzdpoN-mW")
+      .then(() => {
+        toast({ title: "Message sent", description: "Thanks — I will reply soon." });
+        setForm({ name: "", email: "", message: "" });
+        setIsSending(false);
+      })
+      .catch(() => {
+        toast({ title: "Send failed", description: "Something went wrong. Please try again later." });
+        setIsSending(false);
+      });
   };
 
   return (
@@ -87,10 +108,11 @@ const ContactSection = () => {
             />
             <button
               type="submit"
-              className="w-full px-6 py-3 rounded-lg bg-primary text-primary-foreground font-semibold flex items-center justify-center gap-2 hover:opacity-90 transition-opacity"
+              disabled={isSending}
+              className="w-full px-6 py-3 rounded-lg bg-primary text-primary-foreground font-semibold flex items-center justify-center gap-2 hover:opacity-90 transition-opacity disabled:opacity-60"
             >
               <Send size={16} />
-              Send Message
+              {isSending ? "Sending..." : "Send Message"}
             </button>
           </motion.form>
         </div>
